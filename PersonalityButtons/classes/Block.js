@@ -292,4 +292,16 @@ class Block extends BlockCore {
     pop();
   }
 
+  isMouseOver() {
+    const d = dist(
+      mouseX,
+      mouseY,
+      this.body.position.x,
+      this.body.position.y
+    );
+    return d < 30; // radius of magnet
+  }
+
 }
+
+

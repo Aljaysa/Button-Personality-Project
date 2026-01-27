@@ -13,6 +13,7 @@ class Magnet extends Ball {
     super(world, attributes, options);
     this.attracted = [];
     this.isActive = this.attributes.attraction;
+    this.isClicked = false;
   }
 
   /**

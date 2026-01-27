@@ -31,11 +31,11 @@ function setup() {
   );
 
 
-  // friend= new Block(
-  //   world,
-  //   { x: width/2, y: height/2, w: 100, h: 100, color: 'white', image: friend },
-  //   { isStatic: true }
-  // )
+  friend= new Block(
+    world,
+    { x: width/2, y: height/2, w: 100, h: 100, color: 'white', image: friend },
+    { isStatic: true }
+  )
 
   chamelion = loadImage("../assets/chamelion.png");
 
@@ -56,6 +56,12 @@ function setup() {
   Matter.Runner.run(engine);
 }
 
+function mousePressed() {
+  if (magnet.isMouseOver()) {
+    magnet.isClicked = !magnet.isClicked;
+  }
+}
+
 function draw() {
   background(0);
 
@@ -71,7 +77,11 @@ function draw() {
 
   magnet.attract();
   magnet.draw();
-  //friend.draw();
+
+  if(magnet.isClicked){
+    friend.draw();
+
+  }
   boxes.draw();
   //mouse.draw();
 }
