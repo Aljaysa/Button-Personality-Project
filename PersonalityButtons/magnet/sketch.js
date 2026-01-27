@@ -1,9 +1,11 @@
 let magnet;
 let boxes;
-
+ 
 
 function setup() {
-  const canvas = createCanvas(800, 600);
+  bgWidth = 1090;
+  bgHeight = 683;
+  const canvas = createCanvas(bgWidth, bgHeight);
 
   // create an engine
   let engine = Matter.Engine.create();
@@ -11,7 +13,8 @@ function setup() {
 
   // no gravity
   engine.world.gravity.scale = 0;
-
+  
+  bg = loadImage("../assets/bg.png");
 
   friend = loadImage("../assets/friend.png");
 
@@ -31,11 +34,11 @@ function setup() {
   );
 
 
-  friend= new Block(
-    world,
-    { x: width/2, y: height/2, w: 100, h: 100, color: 'white', image: friend },
-    { isStatic: true }
-  )
+  // friend= new Block(
+  //   world,
+  //   { x: width/2, y: height/2, w: 100, h: 100, color: 'white', image: friend },
+  //   { isStatic: true }
+  // )
 
   chamelion = loadImage("../assets/chamelion.png");
 
@@ -52,18 +55,67 @@ function setup() {
   // add a mouse to manipulate Matter objects
   //mouse = new Mouse(engine, canvas, { stroke: 'magenta', strokeWeight: 2 });
 
+  tent = loadImage("../assets/tent.png");
+  videoGames = loadImage("../assets/videoGames.png");
+  baseball = loadImage("../assets/baseball.png");
+  microphone = loadImage("../assets/microphone.png");
+  backpack = loadImage("../assets/backpack.png");
+
+  hobbyObjectsIdx = 0;
+  hobbyObjects = [
+    new Block(
+      world,
+      { x: 400, y: 100, w: 10, h: 10, color: 'white', image: friend },
+      { isStatic: true }
+    ), 
+    new Block(
+      world,
+      { x: 250, y:150, w: 10, h: 10, color: 'white', image: videoGames },
+      { isStatic: true }
+    ),
+    new Block(
+      world,
+      { x: 270, y: 200, w: 10, h: 10, color: 'white', image: baseball },
+      { isStatic: true }
+    ),
+    new Block(
+      world,
+      { x: 350, y:500, w: 10, h: 10, color: 'white', image: microphone },
+      { isStatic: true }
+    ),
+    new Block(
+      world,
+      { x: 400, y: 500, w: 10, h: 10, color: 'white', image: backpack },
+      { isStatic: true }
+    ),
+    new Block(
+      world,
+      { x: 600, y: 500, w: 10, h: 10, color: 'white', image: tent },
+      { isStatic: true }
+    )
+  ]
+
+  hobbyObjectsIsClicked = [false, false, false, false, false, false];
+
   // run the engine
   Matter.Runner.run(engine);
 }
 
 function mousePressed() {
   if (magnet.isMouseOver()) {
-    magnet.isClicked = !magnet.isClicked;
+    hobbyObjectsIsClicked[hobbyObjectsIdx] = true;
+    if (hobbyObjectsIdx < hobbyObjects.length - 1) {
+      console.log(hobbyObjectsIdx);
+      hobbyObjectsIdx++;
+    }
+    
   }
+  
 }
 
 function draw() {
   background(0);
+  image(bg, 0, 0, width, height);
 
   if (mouseIsPressed) {
     // smoothly move the attractor body towards the mouse
@@ -77,11 +129,12 @@ function draw() {
 
   magnet.attract();
   magnet.draw();
-
-  if(magnet.isClicked){
-    friend.draw();
-
+  for(i=0; i<hobbyObjects.length; i++){
+    if(hobbyObjectsIsClicked[i]){
+      hobbyObjects[i].draw();
   }
+  }
+  
   boxes.draw();
   //mouse.draw();
 }
