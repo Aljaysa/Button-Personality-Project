@@ -158,8 +158,16 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-
+    transition: filter 300ms ease;   
 }
+
+/* button glow when julliana's button is active */
+.btn.glow {
+    filter:
+    drop-shadow(0 0 4px rgba(255, 230, 150, 0.6))
+    drop-shadow(0 0 10px rgba(255, 210, 90, 0.7))
+    drop-shadow(0 0 16px rgba(255, 190, 60, 0.6));
+  }
 
 /* ///////////////////////////////////////////////// */
 /*                 Jason's Button                    */
@@ -181,4 +189,112 @@ body {
 
 #justinButton {}
 
-#jullianaButton {}
+/* ///////////////////////////////////////////////// */
+/*              Julliana's Assests                   */
+/* ///////////////////////////////////////////////// */
+.jullianaAsset {
+    opacity: 0;
+    transition:
+        opacity 250ms ease-out,
+        transform 250ms ease-out;
+    pointer-events: none;
+    transform: translateY(6px);
+}
+
+.jullianaAsset.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#jullianaLaptop {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    z-index: 5;
+    top: 28%;
+    right: 44%;  
+}
+
+#jullianaPiano {
+    position: absolute;
+    width: 65px;
+    height: 65px;
+    z-index: 5;
+    top: 23%;
+    right: 44%;  
+}
+
+#jullianaPerson {
+    position: absolute;
+    width: 35px;
+    height: 55px;
+    z-index: 5;
+    top: 26%;
+    right: 39%;  
+}
+
+#jullianaPolaroid {
+    position: absolute;
+    width: 17px;
+    height: 23px;
+    z-index: 5;
+    top: 30%;
+    right: 46.5%;
+}
+
+#jullianaVanity {
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    z-index: 5;
+    top: 25%;
+    right: 35.5%;
+}
+
+#jullianaMic {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    z-index: 5;
+    top: 35.5%;
+    right: 57.9%;
+}
+
+#jullianaLuggage {
+    position: absolute;
+    width: 15px;
+    height: 20px;
+    z-index: 5;
+    top: 40.3%;
+    right: 53.4%;
+}
+
+#jullianaBTNAnimation {
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    z-index: 5;
+    top: 13%;
+    right: 38.5%;
+}
+
+
+/* ///////////////////////////////////////////////// */
+/*              Julliana's Button                    */
+/* ///////////////////////////////////////////////// */
+#jullianaButton {
+    image-rendering: pixelated;
+    transition: transform 200ms ease;
+}
+
+#jullianaButton.size-0 { transform: scale(0.60); }
+#jullianaButton.size-1 { transform: scale(0.70); }
+#jullianaButton.size-2 { transform: scale(0.80); }
+#jullianaButton.size-3 { transform: scale(0.90); }
+#jullianaButton.size-4 { transform: scale(1.0); }
+
+#jullianaButton.size-0:hover { transform: scale(0.70); }
+#jullianaButton.size-1:hover { transform: scale(0.80); }
+#jullianaButton.size-2:hover { transform: scale(0.90); }
+#jullianaButton.size-3:hover { transform: scale(1.0); } 
+#jullianaButton.size-4:hover { transform: scale(1.1); } 
