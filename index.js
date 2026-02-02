@@ -91,6 +91,7 @@ const jullianaAssets = [
   jullianaButton.classList.add("size-0");
   
   jullianaButton.addEventListener("click", () => {
+    // Change button size with each click until button reaches full size generated using ChatGPT
     if (!unlocked) {
       jullianaButton.classList.remove(`size-${currentSize}`);
       currentSize++;
@@ -105,6 +106,7 @@ const jullianaAssets = [
         });
         jullianaAssetsVisible = true;
 
+        // Glow functionality regerated using ChatGPT
         jasonBtn.classList.add("glow");
         justinBtn.classList.add("glow");
         jullianaFlash.classList.add("visible");

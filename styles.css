@@ -161,7 +161,7 @@ body {
     transition: filter 300ms ease;   
 }
 
-/* button glow when julliana's button is active */
+/* button glow when julliana's button is active generated using ChatGPT*/
 .btn.glow {
     filter:
     drop-shadow(0 0 4px rgba(255, 230, 150, 0.6))
@@ -287,6 +287,7 @@ body {
     transition: transform 200ms ease;
 }
 
+/* size and size hover rules were generated using ChatGPT*/
 #jullianaButton.size-0 { transform: scale(0.60); }
 #jullianaButton.size-1 { transform: scale(0.70); }
 #jullianaButton.size-2 { transform: scale(0.80); }
